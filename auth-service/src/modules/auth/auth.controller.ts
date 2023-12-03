@@ -28,7 +28,7 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 
     @MessagePattern('user.reg')
     async regisrt(@Payload() dto: AuthUserDto ) {
-      return await this.authService.registr(dto.email, dto.password);
+      return await this.authService.registr(dto);
     }
 
     @MessagePattern('user.out')
