@@ -7,6 +7,7 @@ import * as bcrypt from 'bcrypt'
 import { UserDto } from 'src/dto/user-dto';
 import { Validator } from 'src/utils/validator';
 import { IReturnObjectUser } from 'src/interfaces/auth.interface';
+import { AuthUserDto } from 'src/dto/auth-user.dto';
 
 
 @Injectable()
@@ -59,7 +60,8 @@ export class AuthService {
           }
       }
 
-      async registr(email:string, password:string):Promise<IReturnObjectUser> {
+      async registr(dto:AuthUserDto):Promise<IReturnObjectUser> {
+        const {email, password} = dto
         try {
             const emailValid = Validator.isEmail(email);
             const passValid = Validator.isPassword( password );
